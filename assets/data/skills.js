@@ -4,12 +4,12 @@ window.skillsData = [
         "title": "Chef de projet",
         "icon": "📊",
         "skills": [
-            { "name": "Gestion de projet", "level": "Avancé", "color": "bg-bordeaux" },
-            { "name": "Matrice de risques", "level": "Avancé", "color": "bg-bordeaux" },
-            { "name": "Planification stratégique", "level": "Intermédiaire", "color": "bg-orange" },
-            { "name": "Communication", "level": "Avancé", "color": "bg-mint" },
-            { "name": "Gestion des parties prenantes", "level": "Intermédiaire", "color": "bg-orange" },
-            { "name": "Outils de gestion de projet (JIRA, Trello)", "level": "Avancé", "color": "bg-mint" }
+            { "name": "Gestion de projet", "level": '3'},
+            { "name": "Matrice de risques", "level": '3'},
+            { "name": "Planification stratégique", "level": '2'},
+            { "name": "Communication", "level": '3'},
+            { "name": "Gestion des parties prenantes", "level": '2'},
+            { "name": "Outils de gestion de projet (JIRA, Trello)", "level": '3'}
         ]
     },
     {
@@ -17,12 +17,12 @@ window.skillsData = [
         "title": "Programmation",
         "icon": "💻",
         "skills": [
-            { "name": "C/C++", "level": "Avancé", "color": "bg-bordeaux" },
-            { "name": "Java", "level": "Intermédiaire", "color": "bg-orange" },
-            { "name": "Python", "level": "Intermédiaire", "color": "bg-mint" },
-            { "name": "HTML/CSS/JS", "level": "Avancé", "color": "bg-bordeaux" },
-            { "name": "Node.js", "level": "Débutant", "color": "bg-orange" },
-            { "name": "SQL", "level": "Intermédiaire", "color": "bg-mint" }
+            { "name": "C/C++", "level": '3'},
+            { "name": "Java", "level": '2' },
+            { "name": "Python", "level": '2'},
+            { "name": "HTML/CSS/JS", "level": '3'},
+            { "name": "SQL", "level": '2'},
+            { "name": "Powershell", "level": '1'}
         ]
     },
     {
@@ -30,12 +30,12 @@ window.skillsData = [
         "title": "Outils & Technologies",
         "icon": "🛠️",
         "skills": [
-            { "name": "Qt Framework", "level": "Avancé", "color": "bg-bordeaux" },
-            { "name": "Architecture Logicielle", "level": "Intermédiaire", "color": "bg-orange" },
-            { "name": "Git/GitHub", "level": "Avancé", "color": "bg-mint" },
-            { "name": "Méthodes Agiles", "level": "Intermédiaire", "color": "bg-bordeaux" },
-            { "name": "Docker/Kubenetes", "level": "Débutant", "color": "bg-orange" },
-            { "name": "Linux/Unix", "level": "Intermédiaire", "color": "bg-mint" }
+            { "name": "Qt Framework", "level": '3' },
+            { "name": "Architecture Logicielle", "level": '2' },
+            { "name": "Git/GitHub/GitLab", "level": '3' },
+            { "name": "Méthodes Agiles", "level": '2' },
+            { "name": "Docker/Kubenetes", "level": '1'},
+            { "name": "Linux/Unix", "level": '2' }
         ]
     },
     {
@@ -43,7 +43,6 @@ window.skillsData = [
         "title": "Langues",
         "icon": "🌍",
         "skills": [
-            { "name": "Français", "level": "Natif", "color": "bg-bordeaux" },
             { "name": "Anglais", "level": "Professionnel", "color": "bg-orange" },
             { "name": "Espagnol", "level": "Conversationnel", "color": "bg-mint" }
         ]

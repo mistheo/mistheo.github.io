@@ -128,6 +128,7 @@
             </div>
             <div class="flex items-center gap-2 mt-2 md:mt-0">
                 <a 
+                @click="show = false"
                 :href="window.bannerInoData?.bannerInfo?.ctaLink" 
                 class="bg-bordeaux text-cream px-3 py-1 rounded-full font-semibold shadow hover:bg-orange transition"
                 x-text="window.bannerInoData?.bannerInfo?.ctaText"
@@ -257,10 +258,10 @@
                 
                 <div class="fade-in">
                     <p class="text-lg mb-6 leading-relaxed">
-                        Je m'appel Théo ! <br>
+                        Je m'appelle Théo ! <br>
                         <br>
                         Actuellement en étudiant en alternance en informatique,<br>
-                        passionné par le développement logiciel et la gestion de projets (et la musique !), je souhaite m'épanouir dans la création de projet innovants et créatif via ma passion de l'informatique.\n
+                        passionné par le développement logiciel et la gestion de projets (et la musique !), je souhaite m'épanouir dans la création de projet innovants et créatifs via ma passion de l'informatique.
                         Ma méthodologie allie rigueur technique et créativité pour transformer les idées en projets concrets.
                     </p>
                     
@@ -297,7 +298,15 @@
                             <template x-for="item in skill.skills" :key="item.name">
                                 <div class="bg-cream p-3 rounded transition-all duration-300 hover:bg-mint hover:scale-105 flex items-center justify-between">
                                     <span class="font-medium text-black-matte" x-text="item.name"></span>
-                                    <span class="ml-2 px-2 py-1 rounded text-xs font-semibold" :class="item.color" x-text="item.level"></span>
+                                    <span 
+                                        class="ml-2 px-2 py-1 rounded text-xs font-semibold"
+                                        :class="{
+                                            'bg-mint text-black-matte': item.level === '1',
+                                            'bg-orange text-black-matte': item.level === '2',
+                                            'bg-bordeaux text-white': item.level === '3'
+                                        }"
+                                        x-text="item.level === '1' ? 'Débutant' : (item.level === '2' ? 'Intermédiaire' : (item.level === '3' ? 'Avancé' : item.level))"
+                                    ></span>
                                 </div>
                             </template>
                         </div>
