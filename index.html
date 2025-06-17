@@ -528,17 +528,11 @@
                 <h2 class="font-bebas text-4xl md:text-5xl text-bordeaux mb-4 uppercase">Témoignages</h2>
                 <div class="w-24 h-1 bg-mint mx-auto"></div>
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" x-data="{ testimonials: window.testimonialsData || [] }">
-                <template x-for="testimonial in testimonials" :key="testimonial.id">
-                    <div class="fade-in bg-grey-light p-6 rounded-lg shadow-md card-hover text-center">
-                        <img class="w-20 h-20 rounded-full mb-4 border-4 border-mint shadow mx-auto" :src="testimonial.avatar" :alt="testimonial.name">
-                        <h3 class="font-montserrat font-semibold text-lg text-bordeaux" x-text="testimonial.name"></h3>
-                        <div class="text-sm text-orange font-medium" x-text="testimonial.role"></div>
-                        <div class="text-xs text-gray-500 mb-2" x-text="testimonial.company"></div>
-                        <p class="text-gray-700 mt-2" x-text="testimonial.text"></p>
-                    </div>
-                </template>
+            <div class="flex flex-col items-center justify-center py-12">
+                <div class="bg-grey-light p-8 rounded-lg shadow-md text-center max-w-xl">
+                    <p class="text-bordeaux font-montserrat text-xl mb-2">Les témoignages arrivent bientôt !</p>
+                    <p class="text-black-matte text-base">Mais l'essentiel est déjà là pour que vous puissiez me connaitre</p>
+                </div>
             </div>
         </div>
     </section>
