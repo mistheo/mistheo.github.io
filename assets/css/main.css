@@ -1,130 +1,46 @@
-/* ===== VARIABLES CSS ===== */
-:root {
-    --cream: #f3e9dc;
-    --cream-dark: #e6d7c8;
-    --mint: #a7d2ae;
-    --mint-light: #c4e3ca;
-    --mint-dark: #84bd90;
-    --bordeaux: #7e2f2f;
-    --bordeaux-light: #a64545;
-    --orange: #d9753f;
-    --orange-light: #e69b6b;
-    --black-matte: #1a1a1a;
-    --grey-light: #f8f8f8;
-}
+/* ===== MINIMAL CUSTOM CSS - MAXIMIZING TAILWIND USAGE ===== */
 
-/* ===== BASE STYLES ===== */
+/* Base styles that can't be done with Tailwind */
 html {
     scroll-behavior: smooth;
 }
 
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
+/* Vinyl player specific animations and positioning */
+.vinyl-arm {
+    position: absolute;
+    right: -1.5rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(30deg);
+    transform-origin: top right;
 }
 
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
+/* Timeline line - complex pseudo-element styling */
+.timeline-line::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 0;
+    bottom: 0;
+    width: 0.25rem;
+    background-color: #a7d2ae;
+    border-radius: 9999px;
 }
 
-.section-padding {
-    padding: 4rem 1rem;
-}
-
-@media (min-width: 768px) {
-    .section-padding {
-        padding: 6rem 2rem;
-    }
-}
-
-/* ===== VINYL STYLES ===== */
-.vinyl-texture {
-    background: radial-gradient(circle at center, 
-        transparent 15%, 
-        rgba(26, 26, 26, 0.1) 15%, 
-        rgba(26, 26, 26, 0.1) 20%, 
-        transparent 20%);
-}
-
-.vinyl-container {
-    transition: all 0.3s ease;
-}
-
-.vinyl-playing {
-    animation: vinyl-spin-fast 1s linear infinite;
-}
-
-.vinyl-stopped {
-    animation: vinyl-spin 3s linear infinite;
-}
-
-.vinyl-starting {
-    animation: vinylPulse 0.5s ease-in-out;
-}
-
-@keyframes vinylPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-/* ===== CARD STYLES ===== */
-.card-hover {
-    transition: all 0.3s ease;
-}
-
-.card-hover:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-/* ===== AUDIO BUTTON ===== */
-.audio-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-
-.audio-btn:hover {
-    transform: scale(1.1);
-}
-
-/* ===== TOOLTIP HOBBIES STYLES ===== */
-.tooltip {
-    position: relative;
-    display: inline-block;
-}
-
-.tooltip-content {
+/* Hobby tooltip - complex positioning and animations */
+.hobby-tooltip {
     position: absolute;
     bottom: 120%;
     left: 50%;
-    background: rgba(126, 47, 47, 0.95);
-    color: white;
-    padding: 12px 16px;
-    border-radius: 12px;
-    font-size: 14px;
-    line-height: 1.4;
-    white-space: nowrap;
-    min-width: max-content;
-    white-space: normal;
-    text-align: center;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
+    transform: translateX(-50%) translateY(10px) scale(0.8);
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    transform: translateX(-50%) translateY(10px) scale(0.8);
-    z-index: 1000;
+    z-index: 1100;
+    min-width: max-content;
+    max-width: 250px;
 }
 
-.tooltip-content::after {
+.hobby-tooltip::after {
     content: '';
     position: absolute;
     top: 100%;
@@ -134,297 +50,111 @@ html {
     border-top-color: rgba(126, 47, 47, 0.95);
 }
 
-.tooltip:hover .tooltip-content {
+.hobby-card:hover .hobby-tooltip {
     opacity: 1;
     visibility: visible;
+    transform: translateX(-50%) translateY(0) scale(1);
 }
 
-.hobby-item {
-    transition: all 0.3s ease;
+/* Custom volume slider styles for cross-browser compatibility */
+.volume-slider {
+    background: #a7d2ae;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: #7e2f2f;
     cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.hobby-item:hover {
-    transform: translateY(-5px);
+.volume-slider::-moz-range-thumb {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: #7e2f2f;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== CAROUSEL STYLES ===== */
-.carousel-container {
-    position: relative;
-    overflow: hidden;
+.volume-slider::-moz-range-track {
+    background: #a7d2ae;
+    height: 0.5rem;
+    border-radius: 9999px;
+    border: none;
 }
 
-.carousel-slide {
-    min-height: 300px;
-    display: flex;
-    align-items: stretch;
+/* Focus states for accessibility */
+.volume-slider:focus {
+    box-shadow: 0 0 0 3px rgba(126, 47, 47, 0.3);
 }
 
-.carousel-track {
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
 }
 
-.carousel-nav {
-    backdrop-filter: blur(10px);
-    background: rgba(126, 47, 47, 0.9);
+::-webkit-scrollbar-track {
+    background: #f3e9dc;
 }
 
-.carousel-nav:hover {
-    background: rgba(126, 47, 47, 1);
-    transform: scale(1.1);
+::-webkit-scrollbar-thumb {
+    background: #a7d2ae;
+    border-radius: 4px;
 }
 
-/* ===== TESTIMONIAL STYLES ===== */
-.testimonial-card {
-    background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
-    border: 1px solid rgba(167, 210, 174, 0.2);
-    transition: all 0.3s ease;
+::-webkit-scrollbar-thumb:hover {
+    background: #84bd90;
 }
 
-.testimonial-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    border-color: rgba(167, 210, 174, 0.4);
-}
-
-.testimonial-quote {
-    position: relative;
-    padding: 1rem 0;
-}
-
-.testimonial-quote::before {
-    content: '"';
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    font-size: 4rem;
-    color: rgba(126, 47, 47, 0.1);
-    font-family: 'Pacifico', cursive;
-    line-height: 1;
-}
-
-/* ===== JOURNEY SECTIONS ===== */
-.journey-section {
-    margin-bottom: 3rem;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease-out;
-}
-
-.journey-section.animate-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.section-header {
-    position: relative;
-    margin-bottom: 2rem;
-}
-
-.section-title {
-    position: relative;
-    display: inline-block;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--orange) 0%, var(--mint-dark) 100%);
-    border-radius: 2px;
-}
-
-/* ===== EXPERIENCE CARDS ===== */
-.experience-card,
-.education-card {
-    position: relative;
-    background: var(--cream);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden;
-}
-
-.experience-card::before,
-.education-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent 0%, var(--orange) 50%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.experience-card:hover::before,
-.education-card:hover::before {
-    opacity: 1;
-}
-
-.experience-card:hover,
-.education-card:hover {
-    transform: translateY(-4px);
-    background: rgba(255, 255, 255, 0.95);
-}
-
-.experience-header,
-.education-header {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    padding-bottom: 1rem;
-}
-
-.experience-title,
-.education-title {
-    line-height: 1.3;
-    margin-bottom: 0.75rem;
-}
-
-.experience-meta,
-.education-meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
-}
-
-.period-badge {
-    white-space: nowrap;
-    font-weight: 600;
-    letter-spacing: 0.025em;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.company-name,
-.institution-name {
-    font-size: 1rem;
-    color: var(--bordeaux);
-}
-
-.experience-content,
-.education-content {
-    padding-top: 1rem;
-}
-
-/* ===== TASK LIST STYLES ===== */
-.task-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.task-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
-    line-height: 1.6;
-}
-
-.task-bullet {
-    margin-top: 0.5rem;
-    flex-shrink: 0;
-    background: var(--orange);
-    animation: pulse-subtle 2s infinite;
-}
-
-.task-text {
-    flex: 1;
-    color: #4a5568;
-}
-
-.description {
-    line-height: 1.7;
-    color: #4a5568;
-    font-size: 1rem;
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes pulse-subtle {
-    0%, 100% { 
-        opacity: 1; 
-        transform: scale(1);
-    }
-    50% { 
-        opacity: 0.8; 
-        transform: scale(1.1);
-    }
-}
-
-.fade-in {
-    animation: fadeInUp 0.8s ease-out forwards;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ===== RESPONSIVE STYLES ===== */
-@media (max-width: 768px) {
-    .carousel-slide {
-        min-height: 250px;
+/* Print styles */
+@media print {
+    .fixed,
+    .sticky {
+        position: static !important;
     }
     
-    .carousel-nav {
-        padding: 0.5rem;
-    }
-    
-    .carousel-nav svg {
-        width: 1.25rem;
-        height: 1.25rem;
-    }
-
-    .tooltip-content {
-        max-width: 200px;
-        font-size: 12px;
-        padding: 8px 12px;
+    .shadow-lg,
+    .shadow-xl,
+    .shadow-md {
+        box-shadow: none !important;
     }
 }
 
-@media (max-width: 640px) {
-    .experience-card,
-    .education-card {
-        padding: 1.5rem;
-        margin: 0 -0.5rem;
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
     
-    .experience-meta,
-    .education-meta {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.75rem;
-    }
-    
-    .section-title {
-        font-size: 1.75rem;
-    }
-    
-    .task-item {
-        margin-bottom: 0.5rem;
+    html {
+        scroll-behavior: auto;
     }
 }
 
-@media (max-width: 480px) {
-    .journey-section {
-        margin-bottom: 2rem;
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .bg-mint {
+        background-color: #2d5016 !important;
     }
     
-    .experience-card,
-    .education-card {
-        padding: 1.25rem;
-        border-radius: 0.75rem;
+    .bg-orange {
+        background-color: #8b4513 !important;
     }
     
-    .section-title {
-        font-size: 1.5rem;
+    .text-bordeaux {
+        color: #000000 !important;
     }
 }
