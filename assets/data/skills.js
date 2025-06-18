@@ -43,8 +43,8 @@ window.skillsData = [
         "title": "Langues",
         "icon": "🌍",
         "skills": [
-            { "name": "Anglais", "level": "Professionnel", "color": "bg-orange" },
-            { "name": "Espagnol", "level": "Conversationnel", "color": "bg-mint" }
+            { "name": "Anglais", "level": '3' },
+            { "name": "Espagnol", "level": '1' }
         ]
     }
 ];
