@@ -337,16 +337,30 @@
                             <div class="text-3xl mb-2" x-text="skill.icon"></div>
                             <h3 class="font-bebas text-xl text-bordeaux" x-text="skill.title"></h3>
                         </div>
-                        <div class="space-y-3">
-                            <template x-for="item in skill.skills" :key="item.name">
+                        <div 
+                            class="space-y-3 pr-2"
+                            x-data="{ expanded: false, limit: 5 }"
+                            :class="{'max-h-80 overflow-y-auto': expanded && skill.skills.length > limit}"
+                        >
+                            <template x-for="(item, idx) in expanded ? skill.skills : skill.skills.slice(0, limit)" :key="item.name">
                                 <div class="bg-cream p-3 rounded transition-all duration-300 hover:bg-mint hover:scale-105 flex items-center justify-between">
                                     <span class="font-medium text-black-matte" x-text="item.name"></span>
-                                    <span class="ml-2 px-2 py-1 rounded text-xs font-semibold" :class="{
-                                        'bg-mint text-black-matte': item.level === '1',
-                                        'bg-orange text-black-matte': item.level === '2',
-                                        'bg-bordeaux text-white': item.level === '3'
-                                    }" x-text="item.level === '1' ? 'Bases' : (item.level === '2' ? 'Opérationnel' : (item.level === '3' ? 'Autonome' : item.level))"></span>
+                                    <span class="ml-2 px-2 py-1 rounded text-xs font-semibold"
+                                        :class="{
+                                            'bg-mint text-black-matte': item.level === '1',
+                                            'bg-orange text-black-matte': item.level === '2',
+                                            'bg-bordeaux text-white': item.level === '3'
+                                        }"
+                                        x-text="item.level === '1' ? 'Bases' : (item.level === '2' ? 'Opérationnel' : (item.level === '3' ? 'Autonome' : item.level))">
+                                    </span>
                                 </div>
+                            </template>
+                            <template x-if="skill.skills.length > limit">
+                                <button 
+                                    class="mt-2 w-full text-center text-bordeaux font-semibold hover:underline focus:outline-none"
+                                    @click="expanded = !expanded"
+                                    x-text="expanded ? 'Voir moins' : `Voir tout (${skill.skills.length})`"
+                                ></button>
                             </template>
                         </div>
                     </div>
