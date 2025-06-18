@@ -60,6 +60,7 @@
     <script src="./assets/data/testimonials.js"></script>
     <script src="./assets/data/hobbies.js"></script>
     <script src="./assets/data/bannerinfo.js"></script>
+    <script src="./assets/data/aboutMe.js"></script>
     
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -300,21 +301,20 @@
                     </div>
                 </div>
                 
-                <div class="space-y-6">
-                    <p class="text-lg leading-relaxed">
-                        Je m'appelle Théo, <br><br>
-                        Etudiant, en alternance dans le domaine de l'informatique,<br>
-                        passionné par le développement logiciel et la gestion de projets (et la musique !), je souhaite m'épanouir dans la création de projets innovants et créatifs via ma passion de l'informatique.
-                        Ma méthodologie allie, rigueur technique et créativité pour transformer les idées en projets concrets.
-                    </p>
-                    
-                    <div>
+                <div class="space-y-6" x-data="{ infos : window.aboutMe || {} }">
+                    <p class="text-lg leading-relaxed" x-html="infos.description"></p>
+                    <div x-data="{ valeurs: infos.valeurs || [] }">
                         <h3 class="font-montserrat font-semibold text-xl text-bordeaux mb-4">Mes valeurs</h3>
                         <div class="flex flex-wrap gap-3">
-                            <span class="bg-mint text-black-matte px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-110 cursor-pointer">Curieux</span>
-                            <span class="bg-orange text-cream px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-110 cursor-pointer">Persévérant</span>
-                            <span class="bg-bordeaux text-cream px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-110 cursor-pointer">Indépendant</span>
-                            <span class="bg-mint text-black-matte px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-110 cursor-pointer">Créatif</span>
+                            <template x-for="(valeur, idx) in valeurs" :key="idx">
+                                <span
+                                    :class="[
+                                        idx % 3 === 0 ? 'bg-mint text-black-matte' : (idx % 3 === 1 ? 'bg-orange text-cream' : 'bg-bordeaux text-cream'),
+                                        'px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-110 cursor-pointer'
+                                    ]"
+                                    x-text="valeur"
+                                ></span>
+                            </template>
                         </div>
                     </div>
                 </div>
