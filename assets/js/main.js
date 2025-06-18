@@ -60,13 +60,6 @@ function initVinylPlayer () {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Load content
-    loadSkills();
-    loadProjects();
-    loadExperiences();
-    loadHobbies();
-    loadTestimonials();
-
     // Initialize features
     handleScrollAnimations();
     initSmoothScroll();
