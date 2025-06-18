@@ -1,8 +1,3 @@
-import { loadSkills } from './sections/skills.js';
-import { loadProjects } from './sections/projects.js';
-import { loadHobbies } from './sections/hobbies.js';
-import { loadTestimonials } from './sections/testimonials.js';
-import { loadExperiences } from './sections/experiences.js';
 import { testimonialCarousel } from './sections/carousel.js';
 import { utils } from './utils.js';
 
