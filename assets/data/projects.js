@@ -26,7 +26,6 @@ window.projectsData = [
         "technologies": ["Python", "Discord API", "Twitch API"],
         "image": "../assets/img/projects/discord_twitch.png",
         "github": "https://github.com/mistheo/twitch_alterte_webhook",
-        "demo": "https://mistheo.github.io/twitch_alterte_webhook/",
     }
 
 ];
