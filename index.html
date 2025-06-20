@@ -453,8 +453,15 @@
                 </div>
 
                 <!-- Modal -->
-                <div x-show="showModal" x-transition class="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-                    <div class="bg-cream rounded-lg shadow-lg max-w-lg w-full p-6 relative mx-4">
+                <div 
+                    x-show="showModal" 
+                    x-transition 
+                    class="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+                    @click.self="closeModal"
+                    @keydown.window.escape="closeModal"
+                    tabindex="0"
+                >
+                    <div class="bg-cream rounded-lg shadow-lg max-w-lg w-full p-6 relative mx-4" >
                         <button @click="closeModal" class="absolute top-2 right-2 text-bordeaux hover:text-orange text-2xl font-bold transition-colors duration-200">&times;</button>
                         <template x-if="modalData.title">
                             <div class="pr-8">
