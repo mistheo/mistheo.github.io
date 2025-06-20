@@ -26,6 +26,15 @@ window.projectsData = [
         "technologies": ["Python", "Discord API", "Twitch API"],
         "image": "../assets/img/projects/discord_twitch.png",
         "github": "https://github.com/mistheo/twitch_alterte_webhook",
+    },
+    {
+        "id":4,
+        "title":"Application Mobile de Météo",
+        "date":"2024",
+        "description": "Création d'une application météo dans le cadre d'un Projet en Cours avec API et interface Mobile.",
+        "technologies": ["React Native","API OpenWeather"],
+        "image": "../assets/img/projects/sky.jpg",
+        "github" : "https://github.com/mistheo/ReactWeatherApp"
     }
 
 ];
