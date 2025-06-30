@@ -43,7 +43,7 @@ window.projectsData = [
         "description": "Fait pour l'anniversaire d'une amie de mes parents, le siteweb permetant de visualiser les photos prises et les photos uploads via un diaporama. Le diaporama recupère les photos uploads par les invités et permets de les visualiser.",
         "technologies": ["Alpinejs", "Tailwindcss", "Flask", "Python"],
         "image": "../assets/img/projects/photoboot.png",
-        "github": "https://github.com/mistheo/photobooth",
+        "github": "https://github.com/mistheo/photoboot",
     }
 
 ];
