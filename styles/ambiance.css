@@ -1,0 +1,17 @@
+/* --- Ambiance permanente : respiration, grain, vignettage --- */
+.amb{position:fixed;inset:0;pointer-events:none;z-index:5}
+.amb__breath{
+  position:absolute;inset:-20%;
+  background:radial-gradient(60% 45% at 50% 62%, rgba(232,230,224,.055), transparent 70%);
+  animation:breath 24s ease-in-out infinite;
+}
+.amb__vignette{
+  position:absolute;inset:0;
+  background:radial-gradient(120% 90% at 50% 45%, transparent 42%, rgba(0,0,0,.55) 82%, rgba(0,0,0,.85) 100%);
+}
+.amb__grain{
+  position:absolute;inset:-100px;
+  background-image:var(--grain);
+  opacity:.05;mix-blend-mode:screen;
+  animation:drift 5s steps(4) infinite;
+}

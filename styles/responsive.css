@@ -1,0 +1,34 @@
+/* --- Mobile (≤ 640px) --- */
+@media (max-width:640px){
+  :root{--mesh:28px}
+  body{background-attachment:scroll}
+  .amb__vignette{background:radial-gradient(130% 80% at 50% 45%, transparent 46%, rgba(0,0,0,.5) 86%, rgba(0,0,0,.8) 100%)}
+  .amb__breath{animation-duration:32s}
+  .track__line{font-size:clamp(2.5rem,13vw,4.25rem);line-height:.96}
+  .track{min-height:56px}
+  .contact{min-height:44px}
+  .prose{font-size:1rem;line-height:1.7}
+  .prose h2{font-size:1.35rem;margin-top:2rem}
+  .prose hr{margin:1.8rem 0}
+  .veil{height:200dvh}
+}
+/* Écrans tactiles : pas de survol, le remplissage suit l'appui */
+@media (hover:none){
+  .track:active .track__fill{clip-path:inset(0 0 0 0);transition-duration:400ms}
+  .track:active .track__out{-webkit-text-stroke-color:rgba(232,230,224,.2)}
+  .contact:active .contact__icon{color:var(--bone)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .amb__breath,.amb__grain,.veil.rising .veil__grain{animation:none}
+  .amb__breath{opacity:.5;transform:none}
+  .track__fill{transition:none}
+  .track:hover .track__fill,.track:focus-visible .track__fill{clip-path:inset(0 100% 0 0)}
+  .track:hover .track__out,.track:focus-visible .track__out{-webkit-text-stroke-color:var(--bone)}
+  .veil{height:100vh;transform:none;opacity:0;transition:opacity 200ms linear}
+  .veil.rising{transform:none;opacity:1;transition:opacity 200ms linear}
+  .veil.falling{transform:none;opacity:0;transition:opacity 200ms linear}
+  .veil__mass{background:#000}
+  .veil__grain{display:none}
+  .fade-in,.stagger>*{animation:none}
+}

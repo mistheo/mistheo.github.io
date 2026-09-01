@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mistral Théo</title>
+<meta name="description" content="Portfolio de Théo Mistral (mistheo).">
+
+<!-- FONTS: Google Fonts preconnect + stylesheet (display + body typefaces) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- ICONS: Phosphor icon font, used via <i class="ph-light ph-*"> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/light/style.css">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="scripts/tailwind-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script type="module" src="scripts/main.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+
+<!-- LOCAL STYLES: custom CSS on top of Tailwind utilities -->
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<!-- APP ROOT: Alpine component instance (see scripts/portfolio.js), initialized on load -->
+<body x-data="portfolio()" x-init="init()" class="min-h-screen font-body antialiased">
+
+<!-- BACKGROUND: purely decorative ambient layer (breathing glow, grain, vignette), hidden from a11y tree -->
+<div class="amb" aria-hidden="true">
+  <div class="amb__breath"></div>
+  <div class="amb__grain"></div>
+  <div class="amb__vignette"></div>
+</div>
+
+<!-- TRANSITION OVERLAY: full-screen "veil" driven by waveClass (rising/falling)
+     to mask the swap between index and section views (see scripts/transition.js) -->
+<div class="veil" :class="waveClass" aria-hidden="true">
+  <div class="veil__mass"></div>
+  <div class="veil__grain"></div>
+</div>
+
+<!-- MAIN: centered content column, hidden via x-cloak until Alpine has parsed x-data -->
+<main x-cloak class="relative z-10 mx-auto w-full max-w-[1180px] px-6 sm:px-10 lg:px-16">
+
+  <!-- INDEX VIEW: landing screen, shown when view === 'index' -->
+  <div x-show="view === 'index'" class="min-h-screen flex flex-col justify-start py-10 sm:py-20">
+
+    <!-- HEADER: identity block, name + role bound to meta.* from the loaded manifest -->
+    <header class="fade-in flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between sm:gap-10">
+      <div>
+        <h1 class="font-display uppercase leading-none text-[clamp(2rem,4.5vw,3.25rem)] font-medium tracking-[.02em]"
+            x-text="meta.name || 'Portfolio'"></h1>
+        <p class="mt-2 text-[13px] uppercase tracking-[.34em] text-ash" x-text="meta.role"></p>
+      </div>
+
+      <!-- CONTACT LIST: looped from meta.contacts, each entry is an external link with an icon -->
+      <div class="flex w-full flex-col gap-1 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-3 sm:justify-end">
+        <template x-for="c in meta.contacts" :key="c.label">
+          <a :href="c.href" class="contact group inline-flex items-center gap-3" target="_blank" rel="noopener">
+            <i class="contact__icon ph-light" :class="'ph-' + (c.icon || 'link-simple')" aria-hidden="true"></i>
+            <span class="hidden lg:inline text-[10px] uppercase tracking-[.24em] text-ash" x-text="c.label"></span>
+            <span class="border-b border-[#333] pb-[2px] text-[13px] transition-colors group-hover:border-bone" x-text="c.value"></span>
+          </a>
+        </template>
+      </div>
+    </header>
+
+    <!-- ERROR BANNER: surfaces fetch failures from data.js (manifest or section not found) -->
+    <div x-show="error" x-cloak class="mt-6 border border-[#2a2a2a] bg-[#111] px-4 py-3 text-[13px] text-ash">
+      <span class="text-bone">Erreur de chargement <br> </span><span x-text="error"></span>
+    </div>
+
+    <!-- SECTION NAV: looped from sections[], click triggers go(s) into navigation.js goToSection -->
+    <nav class="my-auto py-10 sm:py-20 stagger" aria-label="Sections">
+      <template x-for="(s, i) in sections" :key="s.id">
+        <div class="border-t border-[#191919] last:border-b" :style="`animation-delay:${140 + i * 90}ms`">
+          <a class="track group flex items-baseline gap-3 sm:gap-8 py-3 sm:py-5"
+             :href="'#' + s.id"
+             @click.prevent="go(s)">
+            <!-- index number, 1-based and zero-padded -->
+            <span class="font-body text-[10px] sm:text-xs tracking-[.24em] text-ash pt-1 sm:pt-4 shrink-0"
+                  x-text="String(i + 1).padStart(2, '0')"></span>
+            <!-- title, duplicated (out/fill) for the hover fill animation -->
+            <span class="track__line relative flex-1">
+              <span class="track__out block" x-text="s.title"></span>
+              <span class="track__fill block" aria-hidden="true" x-text="s.title"></span>
+            </span>
+          </a>
+        </div>
+      </template>
+    </nav>
+  </div>
+
+  <!-- SECTION VIEW: detail screen, shown when view === 'section' -->
+  <div x-show="view === 'section'" class="min-h-screen py-10 sm:py-20">
+
+    <!-- BACK BUTTON: triggers back() into navigation.js goBack, replays the transition in reverse -->
+    <button @click="back()"
+            class="group inline-flex min-h-[44px] items-center gap-3 text-[22px] uppercase tracking-[.24em] text-ash transition-colors hover:text-bone">
+      <i class="ph-light ph-arrow-left text-[27px] leading-none transition-transform duration-300 group-hover:-translate-x-1" aria-hidden="true"></i>
+      Retour
+    </button>
+
+    <!-- SECTION HEADER: current section's index (getter) and title -->
+    <header class="mt-6 sm:mt-10 border-b border-[#191919] pb-5 sm:pb-6">
+      <!-- <p class="text-[11px] tracking-[.24em] text-ash" x-text="currentIndex"></p> -->
+      <h2 class="track__line mt-2" x-text="current ? current.title : ''"></h2>
+    </header>
+
+    <!-- SECTION CONTENT: markdown converted to HTML by marked.js, injected via x-html -->
+    <article class="prose mt-8 sm:mt-10 max-w-[68ch]" x-html="currentHtml"></article>
+  </div>
+
+</main>
+
+</body>
+</html>

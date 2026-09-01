@@ -1,0 +1,21 @@
+:root{
+  --ink:#0a0a0a; --grid:#1c1c1c; --ash:#8a8a8a; --bone:#e8e6e0;
+  --focus:#9184d9;
+  --mesh:44px;
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+[x-cloak]{display:none!important}
+html,body{background:var(--ink)}
+body{
+  color:var(--bone);
+  font-family:Inter,system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  background-image:
+    repeating-linear-gradient(to right, var(--grid) 0 1px, transparent 1px var(--mesh)),
+    repeating-linear-gradient(to bottom, var(--grid) 0 1px, transparent 1px var(--mesh));
+  background-attachment:fixed;
+}
+::selection{background:rgba(232,230,224,.18)}
+a{color:var(--bone);text-decoration:none}
+a:hover{color:#fff}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px}

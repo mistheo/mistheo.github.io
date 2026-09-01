@@ -1,0 +1,22 @@
+/* --- Titres tracklist : contour + remplissage balayé --- */
+.track{position:relative;display:block;width:100%;text-align:left;isolation:isolate}
+.track__line{
+  font-family:"Barlow Condensed",Oswald,sans-serif;
+  font-weight:600;letter-spacing:.01em;line-height:.92;
+  font-size:clamp(3.4rem,11.5vw,9.5rem);
+  text-transform:uppercase;
+}
+.track__out{
+  color:transparent;
+  -webkit-text-stroke:1px rgba(232,230,224,.62);
+  transition:-webkit-text-stroke-color 700ms ease;
+}
+.track__fill{
+  position:absolute;inset:0;color:var(--bone);
+  -webkit-text-stroke:1px var(--bone);
+  clip-path:inset(0 100% 0 0);
+  transition:clip-path 700ms cubic-bezier(.22,.61,.36,1);
+  pointer-events:none;
+}
+.track:hover .track__fill,.track:focus-visible .track__fill{clip-path:inset(0 0 0 0)}
+.track:hover .track__out,.track:focus-visible .track__out{-webkit-text-stroke-color:rgba(232,230,224,.2)}

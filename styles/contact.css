@@ -1,0 +1,2 @@
+.contact__icon{font-size:19px;line-height:1;width:19px;height:19px;display:inline-flex;align-items:center;justify-content:center;color:var(--ash);transition:color 400ms ease,transform 400ms cubic-bezier(.22,.61,.36,1)}
+.contact:hover .contact__icon,.contact:focus-visible .contact__icon{color:var(--bone);transform:translateY(-2px)}

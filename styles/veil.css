@@ -1,0 +1,13 @@
+/* --- Voile de transition : masse diffuse à crête granuleuse --- */
+.veil{position:fixed;left:0;right:0;bottom:0;height:200vh;z-index:60;pointer-events:none;
+  transform:translateY(100%);will-change:transform}
+.veil.rising{transform:translateY(0);transition:transform 900ms cubic-bezier(.32,0,.28,1);pointer-events:auto}
+.veil.falling{transform:translateY(-100%);transition:transform 1000ms cubic-bezier(.4,0,.5,1);pointer-events:auto}
+.veil__mass{position:absolute;inset:0;
+  background:linear-gradient(to top,#000 0%,#000 46%,rgba(0,0,0,.9) 56%,rgba(0,0,0,.45) 68%,rgba(0,0,0,0) 82%)}
+.veil__grain{position:absolute;left:-120px;right:-120px;top:26%;height:44%;
+  background-image:var(--grain);background-size:240px 240px;
+  opacity:.45;mix-blend-mode:screen;
+  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 45%,#000 70%,transparent);
+  mask-image:linear-gradient(to bottom,transparent,#000 45%,#000 70%,transparent)}
+.veil.rising .veil__grain{animation:grainbreathe 900ms ease-in-out both, drift 1.1s steps(3) infinite}
