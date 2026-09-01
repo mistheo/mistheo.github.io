@@ -1,34 +1,57 @@
-## Expériences professionnelles
+<div class="not-prose">
 
-**Développeur et Chef de Projet Informatique**
-CIRCULACAR — oct. 2025 à oct. 2026
+  <h3 class="font-display uppercase tracking-[.16em] text-[22px] font-semibold text-bone">Expériences professionnelles</h3>
+  <div class="mt-2 h-px w-14 bg-bone"></div>
 
----
+  <div class="mt-8 space-y-8 border-l border-[#ddd] pl-7">
+    <div class="relative">
+      <span class="absolute -left-[33px] top-1.5 h-2.5 w-2.5 rounded-full border border-[#fff] bg-[#111]"></span>
+      <p class="text-[10px] uppercase tracking-[.28em] text-ash">oct. 2025 à oct. 2026</p>
+      <p class="mt-1 text-[17px] font-medium text-bone">Développeur et Chef de Projet Informatique</p>
+      <p class="text-[13px] text-ash">CIRCULACAR</p>
+    </div>
+    <div class="relative">
+      <span class="absolute -left-[33px] top-1.5 h-2.5 w-2.5 rounded-full border border-[#fff] bg-[#111]"></span>
+      <p class="text-[10px] uppercase tracking-[.28em] text-ash">janv. 2025 à juin 2025</p>
+      <p class="mt-1 text-[17px] font-medium text-bone">Administrateur Développeur Salesforce et SI</p>
+      <p class="text-[13px] text-ash">Alpol Cosmétique</p>
+    </div>
+    <div class="relative">
+      <span class="absolute -left-[33px] top-1.5 h-2.5 w-2.5 rounded-full border border-[#fff] bg-[#111]"></span>
+      <p class="text-[10px] uppercase tracking-[.28em] text-ash">déc. 2023 à sept. 2024</p>
+      <p class="mt-1 text-[17px] font-medium text-bone">Technicien et Développeur SI</p>
+      <p class="text-[13px] text-ash">Onet Sécurité Système</p>
+    </div>
 
-**Administrateur Développeur Salesforce et SI**
-Alpol Cosmétique — janv. 2025 à juin 2025
+  </div>
 
----
+  <h3 class="mt-14 font-display uppercase tracking-[.16em] text-[22px] font-semibold text-bone">Parcours académique</h3>
+  <div class="mt-2 h-px w-14 bg-bone"></div>
 
-**Technicien et Développeur SI**
-Onet Sécurité Système — déc. 2023 à sept. 2024
-
-## Parcours académique
-
-**Bac+5 — Chef de Projet Ingénierie Logicielle**
-École IPI, Lyon — depuis septembre 2024
-
----
-
-**Bac+3 — Bachelor Concepteur Développeur d'Applications**
-École IPI, Lyon — 2023 à 2024
-
----
-
-**Bac+2 — BTS Systèmes Numériques, option Informatique & Réseaux**
-Lycée Georges Brassens, Rive-de-Gier — 2021 à 2023
-
----
-
-**Baccalauréat**
-Lycée La Martinière Diderot, Lyon — 2021
+  <div class="mt-8 space-y-8 border-l border-[#ddd] pl-7">
+    <div class="relative">
+      <span class="absolute -left-[33px] top-1.5 h-2.5 w-2.5 rounded-full border border-[#fff] bg-[#111]"></span>
+      <p class="text-[10px] uppercase tracking-[.28em] text-ash">sept. 2024 - sept. 2026</p>
+      <p class="mt-1 text-[17px] font-medium text-bone">Bac+5 : Chef de Projet Ingénierie Logicielle</p>
+      <p class="text-[13px] text-ash">École IPI, Lyon</p>
+    </div>
+    <div class="relative">
+      <span class="absolute -left-[33px] top-1.5 h-2.5 w-2.5 rounded-full border border-[#fff] bg-[#111]"></span>
+      <p class="text-[10px] uppercase tracking-[.28em] text-ash">2023 — 2024</p>
+      <p class="mt-1 text-[17px] font-medium text-bone">Bac+3 : Bachelor Concepteur Développeur d'Applications</p>
+      <p class="text-[13px] text-ash">École IPI, Lyon</p>
+    </div>
+    <div class="relative">
+      <span class="absolute -left-[33px] top-1.5 h-2.5 w-2.5 rounded-full border border-[#fff] bg-[#111]"></span>
+      <p class="text-[10px] uppercase tracking-[.28em] text-ash">2021 — 2023</p>
+      <p class="mt-1 text-[17px] font-medium text-bone">Bac+2 : BTS Systèmes Numériques -- Option Informatique & Réseaux</p>
+      <p class="text-[13px] text-ash">Lycée Georges Brassens, Rive-de-Gier</p>
+    </div>
+    <div class="relative">
+      <span class="absolute -left-[33px] top-1.5 h-2.5 w-2.5 rounded-full border border-[#fff] bg-[#111]"></span>
+      <p class="text-[10px] uppercase tracking-[.28em] text-ash">2021</p>
+      <p class="mt-1 text-[17px] font-medium text-bone">Baccalauréat : Mathématiques & Informatique</p>
+      <p class="text-[13px] text-ash">Lycée La Martinière Diderot, Lyon</p>
+    </div>
+  </div>
+</div>
