@@ -1,0 +1,67 @@
+# Pages CMS configuration — https://pagescms.org
+# Edits the structured sources under content/; a GitHub Action recompiles them
+# into data/*.json for the site (.github/workflows/build-content.yml).
+
+media:
+  input: data/media
+  output: /data/media
+  extensions: [png, jpg, jpeg, webp, gif, svg]
+
+content:
+  - name: projects
+    label: Projets
+    type: collection
+    path: content/projects
+    filename: "{fields.title | slugify}.md"
+    view:
+      fields: [title, tags, order, featured]
+      primary: title
+      sort: [order, title]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: title
+        label: Titre
+        type: string
+        required: true
+      - name: wordmark
+        label: Nom affiché sur la carte
+        type: string
+        description: "Grand texte de l'en-tête de carte. Vide = reprend le titre."
+      - name: icon
+        label: Icône (Phosphor)
+        type: string
+        description: "Nom de l'icône sans le préfixe ph- (ex. camera, crown). Voir phosphoricons.com."
+        default: cube
+      - name: image
+        label: Image de couverture
+        type: image
+        description: "Optionnelle. Si présente, remplace l'icône et le nom sur l'en-tête."
+      - name: tags
+        label: Technologies
+        type: string
+        list: true
+      - name: repo
+        label: Lien du dépôt
+        type: string
+        pattern:
+          regex: "^https?://.+"
+          message: "Doit être une URL (http/https)."
+      - name: demo
+        label: Lien de la démo
+        type: string
+        pattern:
+          regex: "^https?://.+"
+          message: "Doit être une URL (http/https)."
+      - name: order
+        label: Ordre d'affichage
+        type: number
+        default: 99
+      - name: featured
+        label: Mis en avant
+        type: boolean
+        default: false
+      - name: body
+        label: Description
+        type: rich-text

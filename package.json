@@ -1,0 +1,14 @@
+{
+  "name": "mistheo-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Content build for the mistheo.github.io portfolio (Alpine.js + Tailwind SPA, no runtime build).",
+  "scripts": {
+    "build:content": "node scripts/build-content.mjs"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "marked": "^12.0.2"
+  }
+}
