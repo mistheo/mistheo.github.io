@@ -143,3 +143,78 @@ content:
           - name: org
             label: Établissement
             type: string
+
+  - name: contact
+    label: Contact
+    type: file
+    path: data/contact.json
+    fields:
+      - name: intro
+        label: Accroche
+        type: text
+      - name: bio
+        label: Présentation
+        type: text
+      - name: email
+        label: Email
+        type: string
+      - name: hobbies
+        label: Loisirs
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Loisir
+            type: string
+            required: true
+          - name: icon
+            label: Icône (Phosphor)
+            type: string
+      - name: details
+        label: Informations complémentaires
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Intitulé
+            type: string
+            required: true
+          - name: note
+            label: Précision (entre parenthèses)
+            type: string
+          - name: icon
+            label: Icône (Phosphor)
+            type: string
+
+  - name: site
+    label: Identité du site
+    type: file
+    path: data/site.json
+    fields:
+      - name: name
+        label: Nom
+        type: string
+        required: true
+      - name: role
+        label: Rôle / accroche
+        type: string
+      - name: contacts
+        label: Liens de contact (en-tête)
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Libellé
+            type: string
+            required: true
+          - name: value
+            label: Texte affiché
+            type: string
+            required: true
+          - name: href
+            label: Lien (URL ou mailto:)
+            type: string
+            required: true
+          - name: icon
+            label: Icône (Phosphor)
+            type: string

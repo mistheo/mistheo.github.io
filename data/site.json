@@ -1,0 +1,9 @@
+{
+  "name": "Théo Mistral",
+  "role": "Chef de projet & Développeur",
+  "contacts": [
+    { "label": "Email", "value": "th.mistral@gmail.com", "href": "mailto:th.mistral@gmail.com", "icon": "envelope-simple" },
+    { "label": "GitHub", "value": "mistheo", "href": "https://github.com/mistheo", "icon": "github-logo" },
+    { "label": "LinkedIn", "value": "théo-mistral", "href": "https://www.linkedin.com/in/th%C3%A9o-mistral-8597b6216/", "icon": "linkedin-logo" }
+  ]
+}

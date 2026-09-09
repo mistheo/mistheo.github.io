@@ -1,0 +1,16 @@
+{
+  "intro": "Théo Mistral, alias mistheo. Né le 21/02/2003, basé à Lyon.",
+  "bio": "Développeur et chef de projet, actuellement en Bac+5 Chef de Projet Ingénierie Logicielle à l'école IPI et en alternance chez Circulacar. Développement embarqué, données sensibles et IA/LLM d'un côté ; pilotage de projet, méthodes agiles et technologies créatives de l'autre.",
+  "email": "th.mistral@gmail.com",
+  "hobbies": [
+    { "label": "Escalade", "icon": "mountains" },
+    { "label": "Volleyball", "icon": "volleyball" },
+    { "label": "Judo", "icon": "boxing-glove" },
+    { "label": "Cuisine", "icon": "cooking-pot" },
+    { "label": "Culture musicale", "icon": "music-notes" },
+    { "label": "Lecture", "icon": "book-open" }
+  ],
+  "details": [
+    { "label": "Permis B", "note": "non véhiculé", "icon": "car" }
+  ]
+}

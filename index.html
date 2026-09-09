@@ -217,6 +217,43 @@
       </div>
     </template>
 
+    <!-- CONTACT LAYOUT: identity + hobbies + contact details, from data/contact.json -->
+    <template x-if="current && current.layout === 'contact'">
+      <div class="not-prose mt-8 sm:mt-10">
+        <p class="text-[25px] leading-relaxed text-bone" x-text="currentData ? currentData.intro : ''"></p>
+        <p class="mt-4 text-[14px] leading-relaxed text-ash" x-text="currentData ? currentData.bio : ''"></p>
+
+        <template x-if="currentData && currentData.hobbies && currentData.hobbies.length">
+          <div>
+            <h3 class="mt-12 font-display uppercase tracking-[.16em] text-[22px] font-semibold text-bone">Mes loisirs</h3>
+            <div class="mt-2 h-px w-14 bg-bone"></div>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <template x-for="h in currentData.hobbies" :key="h.label">
+                <span class="inline-flex items-center gap-2 rounded-lg border border-[#2c2c2c] bg-[#141414] px-3.5 py-2 text-[13px] text-bone">
+                  <i class="ph-light text-[18px] text-ash" :class="'ph-' + (h.icon || 'circle')" aria-hidden="true"></i><span x-text="h.label"></span>
+                </span>
+              </template>
+            </div>
+          </div>
+        </template>
+
+        <h3 class="mt-12 font-display uppercase tracking-[.16em] text-[22px] font-semibold text-bone">Contact</h3>
+        <div class="mt-2 h-px w-14 bg-bone"></div>
+        <div class="mt-6 space-y-3">
+          <a x-show="currentData && currentData.email" :href="`mailto:${currentData ? currentData.email : ''}`"
+             class="group inline-flex items-center gap-3 rounded-lg border border-[#2c2c2c] bg-[#141414] px-4 py-3 text-[14px] text-bone transition-colors hover:border-[#3a3a3a]">
+            <i class="ph-light ph-envelope-simple text-[20px] text-ash transition-colors group-hover:text-bone" aria-hidden="true"></i><span x-text="currentData ? currentData.email : ''"></span>
+          </a>
+          <template x-for="d in (currentData ? currentData.details : [])" :key="d.label">
+            <div class="inline-flex items-center gap-3 rounded-lg border border-[#2c2c2c] bg-[#141414] px-4 py-3 text-[14px] text-bone">
+              <i class="ph-light text-[20px] text-ash" :class="'ph-' + (d.icon || 'info')" aria-hidden="true"></i>
+              <span><span x-text="d.label"></span><span class="text-ash" x-show="d.note" x-text="` (${d.note})`"></span></span>
+            </div>
+          </template>
+        </div>
+      </div>
+    </template>
+
     <!-- MARKDOWN LAYOUT: default when a section has no dedicated layout -->
     <template x-if="!current || !current.layout">
       <article class="prose mt-8 sm:mt-10 max-w-[68ch]" x-html="currentHtml"></article>
