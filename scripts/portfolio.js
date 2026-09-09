@@ -11,7 +11,8 @@ export function portfolio() {
     meta: { name: '', role: '', contacts: [] }, // site-wide info from manifest.json
     sections: [],                           // ordered list of navigable sections
     current: null,                          // currently displayed section object
-    currentHtml: '',                        // rendered Markdown for the current section
+    currentHtml: '',                        // rendered Markdown for the current section (file-backed)
+    currentData: null,                      // structured payload for a data-backed section (e.g. projects)
     waveClass: '',                          // '' | 'rising' | 'falling' — drives the transition veil
     error: '',                              // last fetch error message, shown in the UI
 

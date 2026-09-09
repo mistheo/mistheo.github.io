@@ -14,3 +14,12 @@ export async function loadSection(section) {
   if (!res.ok) throw new Error(`data/${section.file} : HTTP ${res.status}. Fichier manquant ou nom incorrect (la casse compte sur GitHub Pages).`);
   return marked.parse(await res.text());
 }
+
+// SECTION DATA FETCH: loads a structured section (JSON), e.g. the projects list.
+// Used for sections that declare `data` instead of `file` in the manifest and
+// are rendered by an Alpine template rather than injected as raw HTML.
+export async function loadSectionData(section) {
+  const res = await fetch('data/' + section.data, { cache: 'no-cache' });
+  if (!res.ok) throw new Error(`data/${section.data} : HTTP ${res.status}. Fichier manquant ou nom incorrect (la casse compte sur GitHub Pages).`);
+  return res.json();
+}

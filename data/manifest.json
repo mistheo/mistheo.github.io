@@ -9,7 +9,7 @@
     ]
   },
   "sections": [
-    { "id": "portfolio", "title": "PORTFOLIO", "file": "portfolio.md", "order": 1 },
+    { "id": "portfolio", "title": "PORTFOLIO", "layout": "projects", "data": "projects.json", "order": 1 },
     { "id": "competences", "title": "COMPÉTENCES", "file": "competences.md", "order": 2 },
     { "id": "parcours", "title": "PARCOURS", "file": "parcours.md", "order": 3 },
     { "id": "contact", "title": "CONTACT", "file": "contact.md", "order": 4 }

@@ -1,16 +1,20 @@
 // NAVIGATION LAYER: orchestrates view switching, browser history, and the
 // transition animation. Takes the Alpine `app` state object as first argument
 // (plain functions instead of methods, so they stay testable/composable).
-import { loadSection as fetchSectionHtml } from './data.js';
+import { loadSection as fetchSectionHtml, loadSectionData } from './data.js';
 import { runTransition } from './transition.js';
 
-// CORE LOADER: fetches a section's HTML and swaps the view, optionally animated.
+// CORE LOADER: fetches a section's content and swaps the view, optionally animated.
+// A section is either Markdown-backed (`file`, injected as HTML) or data-backed
+// (`data`, rendered by an Alpine template — e.g. the projects grid).
 // Shared by goToSection (animated) and syncFromHash (not animated, e.g. on reload).
 export async function loadSectionInto(app, section, animate = true) {
   app.error = '';
-  let html;
+  let html = '';
+  let data = null;
   try {
-    html = await fetchSectionHtml(section);
+    if (section.data) data = await loadSectionData(section);
+    else html = await fetchSectionHtml(section);
   } catch (e) {
     // ERROR PATH: fetch failed, fall back to index view with an error message
     app.error = e.message;
@@ -23,6 +27,7 @@ export async function loadSectionInto(app, section, animate = true) {
   const apply = () => {
     app.current = section;
     app.currentHtml = html;
+    app.currentData = data;
     app.view = 'section';
     window.scrollTo(0, 0);
   };
