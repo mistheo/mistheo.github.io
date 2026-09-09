@@ -155,8 +155,70 @@
       </div>
     </template>
 
-    <!-- MARKDOWN LAYOUT: default, section body injected as HTML -->
-    <template x-if="!current || current.layout !== 'projects'">
+    <!-- COMPETENCES LAYOUT: card grid (groups) + a languages card, from data/competences.json -->
+    <template x-if="current && current.layout === 'competences'">
+      <div class="not-prose mt-8 sm:mt-10 grid gap-5 sm:grid-cols-2">
+        <template x-for="g in (currentData ? currentData.groups : [])" :key="g.title">
+          <div class="group rounded-2xl border border-[#242424] bg-[#111] p-7 shadow-[0_1px_0_#1e1e1e,0_20px_40px_-30px_rgba(0,0,0,.9)] transition-all hover:border-[#3a3a3a] hover:bg-[#141414]">
+            <h3 class="font-display uppercase tracking-[.16em] text-[19px] font-semibold text-bone" x-text="g.title"></h3>
+            <div class="mt-2 h-px w-10 bg-[#3a3a3a] transition-all group-hover:w-16 group-hover:bg-bone"></div>
+            <div class="mt-5 flex flex-wrap gap-2" x-show="g.tags && g.tags.length">
+              <template x-for="t in g.tags" :key="t">
+                <span class="rounded-md border border-[#2c2c2c] bg-[#161616] px-2.5 py-1 text-[12px] text-bone" x-text="t"></span>
+              </template>
+            </div>
+            <p class="mt-5 text-[13px] leading-relaxed text-ash" x-show="g.note" x-text="g.note"></p>
+          </div>
+        </template>
+
+        <div class="group rounded-2xl border border-[#242424] bg-[#111] p-7 shadow-[0_1px_0_#1e1e1e,0_20px_40px_-30px_rgba(0,0,0,.9)] transition-all hover:border-[#3a3a3a] hover:bg-[#141414]"
+             x-show="currentData && currentData.languages && currentData.languages.length">
+          <h3 class="font-display uppercase tracking-[.16em] text-[19px] font-semibold text-bone">Langues</h3>
+          <div class="mt-2 h-px w-10 bg-[#3a3a3a] transition-all group-hover:w-16 group-hover:bg-bone"></div>
+          <div class="mt-5 space-y-4">
+            <template x-for="l in (currentData ? currentData.languages : [])" :key="l.name">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-[14px] text-bone" x-text="l.name"></span>
+                  <span class="text-[11px] uppercase tracking-[.24em] text-ash" x-text="l.level"></span>
+                </div>
+                <div class="mt-2 h-[4px] w-full rounded-full bg-[#1c1c1c]">
+                  <div class="h-full rounded-full bg-bone" :style="`width:${l.pct}%`"></div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- PARCOURS LAYOUT: two timelines (experiences, academic), from data/parcours.json -->
+    <template x-if="current && current.layout === 'parcours'">
+      <div class="not-prose mt-8 sm:mt-10">
+        <template x-for="block in [
+          { key: 'experiences', label: 'Expériences professionnelles' },
+          { key: 'academic', label: 'Parcours académique' }
+        ]" :key="block.key">
+          <div class="mt-14 first:mt-0" x-show="currentData && currentData[block.key] && currentData[block.key].length">
+            <h3 class="font-display uppercase tracking-[.16em] text-[22px] font-semibold text-bone" x-text="block.label"></h3>
+            <div class="mt-2 h-px w-14 bg-bone"></div>
+            <div class="mt-8 space-y-8 border-l border-[#ddd] pl-7">
+              <template x-for="(item, i) in (currentData ? currentData[block.key] : [])" :key="block.key + i">
+                <div class="relative">
+                  <span class="absolute -left-[33px] top-1.5 h-2.5 w-2.5 rounded-full border border-[#fff] bg-[#111]"></span>
+                  <p class="text-[10px] uppercase tracking-[.28em] text-ash" x-text="item.period"></p>
+                  <p class="mt-1 text-[17px] font-medium text-bone" x-text="item.title"></p>
+                  <p class="text-[13px] text-ash" x-text="item.org"></p>
+                </div>
+              </template>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+
+    <!-- MARKDOWN LAYOUT: default when a section has no dedicated layout -->
+    <template x-if="!current || !current.layout">
       <article class="prose mt-8 sm:mt-10 max-w-[68ch]" x-html="currentHtml"></article>
     </template>
   </div>

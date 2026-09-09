@@ -1,0 +1,33 @@
+{
+  "groups": [
+    {
+      "title": "Gestion de projet",
+      "tags": ["JIRA", "Trello", "Kanban", "Gantt"],
+      "note": "Planification, analyse de risques. Méthodes agiles, RGPD, veille technique."
+    },
+    {
+      "title": "Développement",
+      "tags": ["C", "C++", "Python", "Java", "SQL", "Flask", "React", "Qt", "FastAPI", "Spring", "Salesforce"],
+      "note": ""
+    },
+    {
+      "title": "Technologies créatives",
+      "tags": ["DMX", "WebGL", "OpenCV"],
+      "note": "Pilotage lumière en DMX. IHM et UX interactive web."
+    },
+    {
+      "title": "Outils",
+      "tags": ["Windows", "Linux", "Git", "Docker", "Kubernetes"],
+      "note": "Tests unitaires, documentation, debugging terrain."
+    },
+    {
+      "title": "Domaines d'expertise",
+      "tags": [],
+      "note": "Développement embarqué. Données sensibles, IA / LLM."
+    }
+  ],
+  "languages": [
+    { "name": "Anglais", "level": "B1", "pct": 50 },
+    { "name": "Espagnol", "level": "A2", "pct": 33 }
+  ]
+}

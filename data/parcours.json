@@ -1,0 +1,41 @@
+{
+  "experiences": [
+    {
+      "period": "oct. 2025 à oct. 2026",
+      "title": "Développeur et Chef de Projet Informatique",
+      "org": "CIRCULACAR"
+    },
+    {
+      "period": "janv. 2025 à juin 2025",
+      "title": "Administrateur Développeur Salesforce et SI",
+      "org": "Alpol Cosmétique"
+    },
+    {
+      "period": "déc. 2023 à sept. 2024",
+      "title": "Technicien et Développeur SI",
+      "org": "Onet Sécurité Système"
+    }
+  ],
+  "academic": [
+    {
+      "period": "sept. 2024 - sept. 2026",
+      "title": "Bac+5 : Chef de Projet Ingénierie Logicielle",
+      "org": "École IPI, Lyon"
+    },
+    {
+      "period": "2023 — 2024",
+      "title": "Bac+3 : Bachelor Concepteur Développeur d'Applications",
+      "org": "École IPI, Lyon"
+    },
+    {
+      "period": "2021 — 2023",
+      "title": "Bac+2 : BTS Systèmes Numériques -- Option Informatique & Réseaux",
+      "org": "Lycée Georges Brassens, Rive-de-Gier"
+    },
+    {
+      "period": "2021",
+      "title": "Baccalauréat : Mathématiques & Informatique",
+      "org": "Lycée La Martinière Diderot, Lyon"
+    }
+  ]
+}

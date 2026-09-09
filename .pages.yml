@@ -1,6 +1,9 @@
 # Pages CMS configuration — https://pagescms.org
-# Edits the structured sources under content/; a GitHub Action recompiles them
-# into data/*.json for the site (.github/workflows/build-content.yml).
+#
+# - Projects are a collection under content/*.md; a GitHub Action recompiles
+#   them into data/projects.json (.github/workflows/build-content.yml).
+# - Single-instance sections (competences, parcours, ...) are edited directly
+#   as the data/*.json files the site fetches — no build step.
 
 media:
   input: data/media
@@ -65,3 +68,78 @@ content:
       - name: body
         label: Description
         type: rich-text
+
+  - name: competences
+    label: Compétences
+    type: file
+    path: data/competences.json
+    fields:
+      - name: groups
+        label: Groupes de compétences
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Titre du groupe
+            type: string
+            required: true
+          - name: tags
+            label: Compétences / technologies
+            type: string
+            list: true
+          - name: note
+            label: Précision (optionnelle)
+            type: text
+      - name: languages
+        label: Langues
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: Langue
+            type: string
+            required: true
+          - name: level
+            label: Niveau (CECR)
+            type: string
+          - name: pct
+            label: Progression (0-100)
+            type: number
+
+  - name: parcours
+    label: Parcours
+    type: file
+    path: data/parcours.json
+    fields:
+      - name: experiences
+        label: Expériences professionnelles
+        type: object
+        list: true
+        fields:
+          - name: period
+            label: Période
+            type: string
+            required: true
+          - name: title
+            label: Poste
+            type: string
+            required: true
+          - name: org
+            label: Organisation
+            type: string
+      - name: academic
+        label: Parcours académique
+        type: object
+        list: true
+        fields:
+          - name: period
+            label: Période
+            type: string
+            required: true
+          - name: title
+            label: Diplôme / formation
+            type: string
+            required: true
+          - name: org
+            label: Établissement
+            type: string
